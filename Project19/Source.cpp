@@ -1,27 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
-#include<math.h>
-int main()
+int gcd(int a, int b)
 {
-	int a, b, c;
-	for (a = 1; a <= 1000; a++)
+	int min = a < b ? a : b;
+	for (int i = min; i > 0; i--)
 	{
-		for (b = 1; b <= 1000; b++)
+		if (a % i == 0 && b % i == 0)
 		{
-			for (c = 1; c <= 1000; c++)
-			{
-				if (a + b + c == 1000)
-				{
-					if (a <= b && b <= c)
-					{
-						if (pow(a, 2) + pow(b, 2) == pow(c, 2))
-						{
-							printf("%d %d %d\n", a, b, c);
-						}
-					}
-				}
-			}
+			return i;
 		}
 	}
-	printf("%d", a * b * c);
+}
+int main()
+{
+	int a, b;
+	scanf_s("%d %d", &a, &b);
+	printf("%d", gcd(a, b));
 	return 0;
 }
